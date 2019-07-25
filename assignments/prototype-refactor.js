@@ -55,7 +55,7 @@ destroy (){
   }
   takeDamage() {
     return `${this.name} took damage.`;
-  }
+    }
   }
   
   
