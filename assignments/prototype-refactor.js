@@ -7,15 +7,28 @@ Prototype Refactor
 2. Your goal is to refactor all of this code to use ES6 Classes. The console.log() statements should still return what is expected of them.
 
 */
-function GameObject(attrs) {
-    this.createdAt = attrs.createdAt;
-    this.name = attrs.name;
-    this.dimensions = attrs.dimensions;
-  }
+// function GameObject(attrs) {
+//     this.createdAt = attrs.createdAt;
+//     this.name = attrs.name;
+//     this.dimensions = attrs.dimensions;
+//   }
   
-  GameObject.prototype.destroy = function(){
-    return `${this.name} was removed from the game.`;
-  }
+//   GameObject.prototype.destroy = function(){
+//     return `${this.name} was removed from the game.`;
+//   }
+
+
+class GameObject {
+  constructor(attrs){
+  this.createdAt = attrs.createdAt;
+  this.name = attrs.name;
+  this.dimensions = attrs.dimensions;
+}
+destroy (){
+  return `${this.name} was removed from the game.`;
+}
+}
+
   
   /*
     === CharacterStats ===
@@ -24,15 +37,25 @@ function GameObject(attrs) {
     * should inherit destroy() from GameObject's prototype
   */
   
-  function CharacterStats(attrs) {
-    GameObject.call(this, attrs);
-    this.healthPoints = attrs.healthPoints;
+  // function CharacterStats(attrs) {
+  //   GameObject.call(this, attrs);
+  //   this.healthPoints = attrs.healthPoints;
+  // }
+  
+  // CharacterStats.prototype = Object.create(GameObject.prototype);
+  
+  // CharacterStats.prototype.takeDamage = function(){
+  //   return `${this.name} took damage.`;
+  // }
+
+  class CharacterStats extends GameObject {
+    constructor(charattrs) {
+      super(charattrs);
+      this.healthPoints = charattrs.healthPoints;
   }
-  
-  CharacterStats.prototype = Object.create(GameObject.prototype);
-  
-  CharacterStats.prototype.takeDamage = function(){
+  takeDamage() {
     return `${this.name} took damage.`;
+  }
   }
   
   
@@ -46,21 +69,36 @@ function GameObject(attrs) {
     * should inherit takeDamage() from CharacterStats
   */
   
-  function Humanoid(attrs) {
-    CharacterStats.call (this, attrs);
-    this.team = attrs.team;
-    this.weapons = attrs.weapons;
-    this.language = attrs.language;
+  // function Humanoid(attrs) {
+  //   CharacterStats.call (this, attrs);
+  //   this.team = attrs.team;
+  //   this.weapons = attrs.weapons;
+  //   this.language = attrs.language;
+  // }
+  
+  // Humanoid.prototype = Object.create(GameObject.prototype);
+  
+  // Humanoid.prototype.takeDamage = function(){
+  //   return `${this.name} took damage.`;
+  // }
+  
+  // Humanoid.prototype.greet = function () {
+  //   return `${this.name} offers a greeting in ${this.language}.`;
+  // }
+
+  class Humanoid extends CharacterStats{
+    constructor(humattrs){
+      super(humattrs);
+      this.team = humattrs.team;
+      this.weapons = humattrs.weapons;
+      this.language = humattrs.language;
   }
-  
-  Humanoid.prototype = Object.create(GameObject.prototype);
-  
-  Humanoid.prototype.takeDamage = function(){
+ takeDamage(){
     return `${this.name} took damage.`;
   }
-  
-  Humanoid.prototype.greet = function () {
+  greet() {
     return `${this.name} offers a greeting in ${this.language}.`;
+  }
   }
   
   /*
