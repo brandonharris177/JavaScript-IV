@@ -59,6 +59,22 @@ class ProjectManager extends Instructor {
     }
 }
 
+const jerry = new Person({
+    name: "Jerry Smith",
+    age: 43,
+    location: "Earth",
+})
+
+jerry.speak();
+
+const beth = new Person({
+    name: "Beth Smith",
+    age: 40,
+    location: "Earth",
+})
+
+beth.speak();
+
 const morty = new Student({
     name: "Morty",
     age: 13,
@@ -102,7 +118,7 @@ teacher_rick.demo("hopelessness");
 teacher_rick.grade(slick, "not caring")
 
 const teacher_rick_B = new Instructor({
-    name: "Also Teacher Rick",
+    name: "also Teacher Rick",
     age: 80,
     location: "The Citidel of Ricks as well",
     previousBackground: "Also a Rick",
@@ -130,12 +146,12 @@ const headmaster_rick = new ProjectManager({
 
 headmaster_rick.speak();
 headmaster_rick.demo("Insignificance");
-headmaster_rick.grade(slick, "Tank tops")
+headmaster_rick.grade(slick, "tank tops")
 headmaster_rick.standUp("ricks")
 headmaster_rick.debugsCode(morty, "CSS, we do some coding here too")
 
 const grandcouncilmember_rick = new ProjectManager({
-    name: "Grandcouncilmember rick",
+    name: "Grandcouncilmember Rick",
     age: 80,
     location: "Citidel of Ricks",
     previousBackground: "REDACTED",
@@ -147,7 +163,7 @@ const grandcouncilmember_rick = new ProjectManager({
 })
 
 grandcouncilmember_rick.speak();
-grandcouncilmember_rick.demo("Stuff");
+grandcouncilmember_rick.demo("stuff");
 grandcouncilmember_rick.grade(morty, "I cant remember what")
 grandcouncilmember_rick.standUp("mortys")
 grandcouncilmember_rick.debugsCode(slick, "his computer")
